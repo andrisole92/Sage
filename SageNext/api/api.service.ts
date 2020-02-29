@@ -8,11 +8,11 @@ import {Configuration} from "../sdk-fetch";
 
 export default class ApiService {
 
-    public static listApi = new ListApi(new Configuration({basePath: process.env.back}));
+    public static listApi = new ListApi(new Configuration({basePath: process.env.BACKEND}));
 
     static async fetchAllLists() {
         try {
-            let res = await fetch(process.env.back + '/list');
+            let res = await fetch(process.env.BACKEND + '/list');
             return await res.json();
         } catch (e) {
             throw(e);
@@ -22,7 +22,7 @@ export default class ApiService {
     static async fetchOneList(id: string) {
         console.log(id);
         try {
-            let res = await fetch(process.env.back + '/list/' + id);
+            let res = await fetch(process.env.BACKEND + '/list/' + id);
             return await res.json();
         } catch (e) {
             throw(e);
@@ -31,7 +31,7 @@ export default class ApiService {
 
     static async create() {
         try {
-            let res = await fetch(process.env.back + '/list', {
+            let res = await fetch(process.env.BACKEND + '/list', {
                 method: 'POST'
             });
             return await res.json();

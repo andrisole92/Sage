@@ -26,7 +26,7 @@ services:
       - "postgres"
       - "backend"
     environment:
-      back: 'http://backend:3000'
+      BACKEND: 'http://backend:3000'
 
 
 volumes:

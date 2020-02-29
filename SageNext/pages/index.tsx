@@ -58,9 +58,12 @@ class Home extends Component<Props> {
         }
         return {listId: query.id, query}
     }
+    componentDidMount(): void {
+    }
 
 
     render() {
+        console.log(process.env.BACKEND);
         return (
             <AppLayout>
                 <div>
