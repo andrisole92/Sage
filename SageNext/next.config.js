@@ -8,7 +8,7 @@ module.exports = withSass(
         },
         publicRuntimeConfig: {
             BACKEND: process.env.BACKEND || 'http://127.0.0.1:3000',
-            HOST: process.env.HOST || 'http://127.0.0.1:3000',
+            HOST: process.env.HOST || 'http://159.203.2.190:3000',
         },
     }
 );

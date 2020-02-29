@@ -24,8 +24,10 @@ interface ListProps {
 }
 
 const Button = styled.button`
-    line-height: 35px;
-    padding: 0 18px;
+    font-size: 16px;
+
+    //line-height: 35px;
+    padding: 14px 18px;
     border: 1px solid gainsboro;
     background: transparent;
     border-radius: 4px;
@@ -44,16 +46,17 @@ const FullButton = styled(Button)`
 
 const Input = styled.input`
     font-size: 16px;
-    line-height: 35px;
-    padding: 0 18px;
+    padding: 14px 18px;
     border: 1px solid gainsboro;
     border-radius: 4px;
-    user-select: none;
     outline: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background: transparent;
+    user-select: text;
+    caret-color: black;
+    line-height: normal;
 
 `;
 
@@ -90,6 +93,12 @@ const List = (props: ListProps) => {
             });
             res.listId = props.listId;
             props.AddListItem(res);
+            props.SetToast({type: ToastType.Success, message: 'New item has beend added to the list.', open: true})
+        } catch (error) {
+            console.error(error);
+            props.SetToast({type: ToastType.Error, message: 'Failed to upload new item.', open: true})
+
+        } finally {
             let newItems = itemsInProgress.slice();
             newItems[itemIndex] = null;
             if (newItems.filter(item => item !== null).length === 0) {
@@ -97,9 +106,6 @@ const List = (props: ListProps) => {
                 newItems = [];
             }
             setItemsInProgress(newItems);
-            props.SetToast({type: ToastType.Success, message: 'New item has beend added to the list.', open: true})
-        } catch (error) {
-            console.error(error);
         }
 
         setTitle('');
@@ -156,7 +162,9 @@ const List = (props: ListProps) => {
                 <div>
                     <InputForm onSubmit={(e) => AddNewItem(e)}>
                         <Input placeholder="New Item Title" value={title}
-                               onChange={(e) => setTitle(e.target.value)}/>
+                               onChange={(e) => {
+                                   setTitle(e.target.value)
+                               }}/>
                         <Button type="submit">Add</Button>
                     </InputForm>
                 </div>

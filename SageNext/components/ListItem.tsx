@@ -24,6 +24,8 @@ const ListItemWrapper = styled.div`
    border-radius: 4px;
    padding: 8px;
    z-index: 9999;
+   user-select: none;
+   -webkit-user-select: none;
    // margin-top: 12px;
 
 `;
