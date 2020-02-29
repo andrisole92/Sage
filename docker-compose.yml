@@ -1,8 +1,28 @@
 version: '3.6'
 services:
+  postgres:
+    image: postgres:12
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgrespassword
   backend:
-#    build: ./sage-server
-    image: andrisole92/sage-back
+    build: ./sage-server
+    ports:
+      - "3000:3000"
+#    image: andrisole92/sage-back
+    depends_on:
+      - "postgres"
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_HOST: postgres
+      POSTGRES_DATABASE: postgres
 #    image: localhost:5000/yourimage
 #    ports:
 #      - "3000:3000"
+
+
+volumes:
+  db_data:
