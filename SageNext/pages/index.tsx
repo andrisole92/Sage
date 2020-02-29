@@ -12,7 +12,12 @@ import {ToastType} from "../store/toast/state";
 import {SetItems, SetListId} from "../store/list/actions";
 import {SetToast} from "../store/toast/actions";
 import {SetLoading} from "../store/loading/actions";
+import getConfig from 'next/config'
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
+console.log(serverRuntimeConfig)
+// Will be available on both server-side and client-side
+console.log(publicRuntimeConfig)
 
 import './index.scss'
 
@@ -27,6 +32,9 @@ interface Props {
 
 class Home extends Component<Props> {
     static async getInitialProps({req, res, query, store}) {
+        console.log(serverRuntimeConfig)
+// Will be available on both server-side and client-side
+        console.log(publicRuntimeConfig)
         if (query && query.id) {
             if (query.new) {
                 store.dispatch(SetToast({open: true, message: 'New List Created!', type: ToastType.Info}));
@@ -63,7 +71,7 @@ class Home extends Component<Props> {
 
 
     render() {
-        console.log(process.env.BACKEND);
+        // console.log(process.env);
         return (
             <AppLayout>
                 <div>

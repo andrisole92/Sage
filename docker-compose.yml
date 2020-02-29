@@ -27,6 +27,7 @@ services:
       - "backend"
     environment:
       BACKEND: 'http://backend:3000'
+      HOST: 'http://localhost:3000'
 
 
 volumes:
