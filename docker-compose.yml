@@ -11,7 +11,6 @@ services:
     build: ./sage-server
     ports:
       - "3000:3000"
-#    image: andrisole92/sage-back
     depends_on:
       - "postgres"
     environment:
@@ -19,9 +18,15 @@ services:
       POSTGRES_PASSWORD: postgrespassword
       POSTGRES_HOST: postgres
       POSTGRES_DATABASE: postgres
-#    image: localhost:5000/yourimage
-#    ports:
-#      - "3000:3000"
+  frontend:
+    build: ./SageNext
+    ports:
+      - "3500:3000"
+    depends_on:
+      - "postgres"
+      - "backend"
+    environment:
+      back: 'http://backend:3000'
 
 
 volumes:
