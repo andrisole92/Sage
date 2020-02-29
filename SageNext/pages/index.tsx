@@ -13,7 +13,8 @@ import {SetItems, SetListId} from "../store/list/actions";
 import {SetToast} from "../store/toast/actions";
 import {SetLoading} from "../store/loading/actions";
 import getConfig from 'next/config'
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
+
+const {serverRuntimeConfig, publicRuntimeConfig} = getConfig()
 
 console.log(serverRuntimeConfig)
 // Will be available on both server-side and client-side
@@ -37,10 +38,14 @@ class Home extends Component<Props> {
         console.log(publicRuntimeConfig)
         if (query && query.id) {
             if (query.new) {
-                store.dispatch(SetToast({open: true, message: 'New List Created!', type: ToastType.Info}));
             }
             try {
                 let list: ListEntity = await ApiService.fetchOneList(query.id);
+                console.log(list);
+                if ((new Date().getTime() - new Date(list.createDateTime).getTime()) < 2000) {
+                    store.dispatch(SetToast({open: true, message: 'New List Created!', type: ToastType.Info}));
+
+                }
                 store.dispatch(SetListId(list.id));
                 store.dispatch(SetItems(list.items));
             } catch (e) {
@@ -66,6 +71,7 @@ class Home extends Component<Props> {
         }
         return {listId: query.id, query}
     }
+
     componentDidMount(): void {
     }
 

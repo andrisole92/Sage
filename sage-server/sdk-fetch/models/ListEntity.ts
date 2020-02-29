@@ -34,12 +34,6 @@ export interface ListEntity {
     id: string;
     /**
      * 
-     * @type {Date}
-     * @memberof ListEntity
-     */
-    createDateTime: Date;
-    /**
-     * 
      * @type {Array<ListItemEntity>}
      * @memberof ListEntity
      */
@@ -57,7 +51,6 @@ export function ListEntityFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     return {
         
         'id': json['id'],
-        'createDateTime': (new Date(json['createDateTime'])),
         'items': ((json['items'] as Array<any>).map(ListItemEntityFromJSON)),
     };
 }
@@ -72,7 +65,6 @@ export function ListEntityToJSON(value?: ListEntity | null): any {
     return {
         
         'id': value.id,
-        'createDateTime': (value.createDateTime.toISOString()),
         'items': ((value.items as Array<any>).map(ListItemEntityToJSON)),
     };
 }

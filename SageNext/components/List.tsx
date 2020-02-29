@@ -143,7 +143,8 @@ const List = (props: ListProps) => {
         let reset = confirm('Reset list?');
         if (reset) {
             try {
-                await ApiService.listApi.listControllerClear({clearListDTO: {listId: props.listId}});
+                let res = await ApiService.listApi.listControllerClear({clearListDTO: {listId: props.listId}});
+                console.log(res);
                 props.SetToast({type: ToastType.Info, message: 'Listed cleared!', open: true});
                 props.ClearList()
             } catch (e) {

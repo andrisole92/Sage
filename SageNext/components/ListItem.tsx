@@ -22,7 +22,7 @@ interface ListItemProps {
 const ListItemWrapper = styled.div`
    border: 1px solid gainsboro;
    border-radius: 4px;
-   padding: 8px;
+   padding: 10px 8px;
    z-index: 9999;
    user-select: none;
    -webkit-user-select: none;

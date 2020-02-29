@@ -8,6 +8,7 @@ export abstract class Base extends BaseEntity{
     id: string;
 
     @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+    @ApiProperty()
     createDateTime: Date;
 
     @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })

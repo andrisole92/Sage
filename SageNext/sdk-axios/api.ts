@@ -90,6 +90,12 @@ export interface ListItemEntity {
     title: string;
     /**
      * 
+     * @type {number}
+     * @memberof ListItemEntity
+     */
+    order: number;
+    /**
+     * 
      * @type {string}
      * @memberof ListItemEntity
      */
@@ -207,7 +213,7 @@ export const ListApiAxiosParamCreator = function (configuration?: Configuration)
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -419,7 +425,7 @@ export const ListApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listControllerClear(clearListDTO: ClearListDTO, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void> {
+        listControllerClear(clearListDTO: ClearListDTO, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean> {
             const localVarAxiosArgs = ListApiAxiosParamCreator(configuration).listControllerClear(clearListDTO, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -444,7 +450,7 @@ export const ListApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listControllerFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void> {
+        listControllerFindOne(id: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListEntity> {
             const localVarAxiosArgs = ListApiAxiosParamCreator(configuration).listControllerFindOne(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -482,7 +488,7 @@ export const ListApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listControllerReorder(reorderListDTO: ReorderListDTO, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void> {
+        listControllerReorder(reorderListDTO: ReorderListDTO, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListEntity> {
             const localVarAxiosArgs = ListApiAxiosParamCreator(configuration).listControllerReorder(reorderListDTO, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -513,7 +519,7 @@ export const ListApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listControllerClear(clearListDTO: ClearListDTO, options?: any): AxiosPromise<void> {
+        listControllerClear(clearListDTO: ClearListDTO, options?: any): AxiosPromise<boolean> {
             return ListApiFp(configuration).listControllerClear(clearListDTO, options)(axios, basePath);
         },
         /**
@@ -530,7 +536,7 @@ export const ListApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listControllerFindOne(id: string, options?: any): AxiosPromise<void> {
+        listControllerFindOne(id: string, options?: any): AxiosPromise<ListEntity> {
             return ListApiFp(configuration).listControllerFindOne(id, options)(axios, basePath);
         },
         /**
@@ -556,7 +562,7 @@ export const ListApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listControllerReorder(reorderListDTO: ReorderListDTO, options?: any): AxiosPromise<void> {
+        listControllerReorder(reorderListDTO: ReorderListDTO, options?: any): AxiosPromise<ListEntity> {
             return ListApiFp(configuration).listControllerReorder(reorderListDTO, options)(axios, basePath);
         },
     };
