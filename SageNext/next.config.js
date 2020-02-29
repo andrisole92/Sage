@@ -4,7 +4,7 @@ const withTypescript = require('@zeit/next-typescript');
 module.exports = withSass(
     {
         env: {
-            BACKEND: process.env.BACKEND || 'http://127.0.0.1:3000',
+            BACKEND: process.env.BACKEND || 'http://localhost:3000',
         },
     }
 );
