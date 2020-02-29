@@ -1,0 +1,31 @@
+h2 {
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.dropabble-box {
+  padding: 0 0 !important;
+  width: 100% !important;
+}
+
+.drag-card {
+  margin-top: 12px;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  div {
+    flex: 1;
+
+    & > div {
+      width: 100%;
+    }
+  }
+}
+
