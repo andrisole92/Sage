@@ -27,11 +27,12 @@ const Button = styled.button`
     line-height: 35px;
     padding: 0 18px;
     border: 1px solid gainsboro;
-    background: white;
+    background: transparent;
     border-radius: 4px;
     user-select: none;
     outline: none;
-    
+        touch-action: manipulation;
+
     &:hover{
       cursor: pointer;
     }
@@ -42,12 +43,18 @@ const FullButton = styled(Button)`
 `;
 
 const Input = styled.input`
+    font-size: 16px;
     line-height: 35px;
     padding: 0 18px;
     border: 1px solid gainsboro;
     border-radius: 4px;
     user-select: none;
     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+
 `;
 
 const InputForm = styled.form`
