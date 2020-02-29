@@ -1,0 +1,8 @@
+version: '3.6'
+services:
+  backend:
+#    build: ./sage-server
+    image: andrisole92/sage-back
+#    image: localhost:5000/yourimage
+#    ports:
+#      - "3000:3000"
